@@ -1,20 +1,26 @@
 #include <iostream>
-#include "objs/Profile.h"
+#include <iomanip>
+#include "player/profile.h"
 
 using namespace std;
 int main(void)
 {
-    cout << "\n==========================="
-         << endl;
-    cout << "\tHello Gamers" << endl;
+    cout << "\n===========================" << endl;
+    cout << setw(16) << "Hello Gamers" << endl;
     cout << "===========================\n"
          << endl;
 
     // CREATE PROFILE
-    Profile Esmond("Esmond Adjei");
-    Esmond.setID();
-    Esmond.getInfo();
-    Esmond.setUsername("Kofi");
+    Profile Player1("Winbledon");
+    Player1.getInfo();
 
-    return 1;
+    // CREATE ANOTHER PROFILE
+    Profile Player2("Hiesenberg");
+    Player2.getInfo();
+
+    // CREATE ANOTHER PROFILE WITHOUT NAME
+    Profile Player3;
+    Player3.getInfo();
+
+    return 0;
 }
