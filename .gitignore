@@ -31,5 +31,6 @@
 *.out
 *.app
 
-# ROUGH SHEET
+# MINE
 copiedCodes.txt
+.vscode/
