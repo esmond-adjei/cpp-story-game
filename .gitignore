@@ -32,5 +32,6 @@
 *.app
 
 # MINE
+tempCodeRunnerFile.cpp
 copiedCodes.txt
 .vscode/

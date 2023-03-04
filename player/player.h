@@ -26,7 +26,8 @@ public:
     void getInfo() const
     {
         cout << left << setw(15) << "ID:" << getID() << endl
-             << left << setw(15) << "Last log date:" << getLastLogDate() << endl;
+             << left << setw(15) << "Last log date:" << getLastLogDate() << endl
+             << endl;
     }
 };
 
