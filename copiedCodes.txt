@@ -1,0 +1,168 @@
+
+class Player
+{
+public:
+    Player(const std::string &name, int age);
+
+    const std::string &getName() const;
+    int getAge() const;
+
+private:
+    std::string name_;
+    int age_;
+};
+
+class Profile : public Player
+{
+public:
+    Profile(const std::string &name, int age, const std::string &username, const std::string &password);
+
+    const std::string &getUsername() const;
+    const std::string &getPassword() const;
+
+private:
+    std::string username_;
+    std::string password_;
+};
+
+// =============================================================
+
+class Player
+{
+private:
+    std::string name;
+    int health;
+    int gold;
+
+public:
+    // constructor
+    Player(std::string name) : name(name), health(100), gold(0) {}
+
+    // getters
+    std::string getName() const { return name; }
+    int getHealth() const { return health; }
+    int getGold() const { return gold; }
+
+    // setters
+    void setName(std::string newName) { name = newName; }
+    void setHealth(int newHealth) { health = newHealth; }
+    void setGold(int newGold) { gold = newGold; }
+
+    // other methods
+    void displayStats() const
+    {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Health: " << health << std::endl;
+        std::cout << "Gold: " << gold << std::endl;
+    }
+};
+
+class Player
+{
+private:
+    std::string name; // name of the player
+    int level;        // level of the player
+    int health;       // health of the player
+    int experience;   // experience points of the player
+public:
+    // constructor
+    Player(std::string n, int l, int h, int e) : name(n), level(l), health(h), experience(e) {}
+
+    // getters and setters for private member variables
+    std::string getName() const { return name; }
+    int getLevel() const { return level; }
+    int getHealth() const { return health; }
+    int getExperience() const { return experience; }
+
+    void setName(std::string n) { name = n; }
+    void setLevel(int l) { level = l; }
+    void setHealth(int h) { health = h; }
+    void setExperience(int e) { experience = e; }
+
+    // member functions for the player class
+    void increaseLevel() { ++level; }
+    void increaseHealth(int h) { health += h; }
+    void increaseExperience(int e) { experience += e; }
+};
+
+class Player
+{
+private:
+    std::string name;
+    int health;
+    int strength;
+    int experience;
+    int level;
+
+public:
+    Player(std::string name, int health, int strength)
+    {
+        this->name = name;
+        this->health = health;
+        this->strength = strength;
+        this->experience = 0;
+        this->level = 1;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getHealth()
+    {
+        return health;
+    }
+
+    void setHealth(int health)
+    {
+        this->health = health;
+    }
+
+    int getStrength()
+    {
+        return strength;
+    }
+
+    void setStrength(int strength)
+    {
+        this->strength = strength;
+    }
+
+    int getExperience()
+    {
+        return experience;
+    }
+
+    void addExperience(int experience)
+    {
+        this->experience += experience;
+        if (this->experience >= 100)
+        {
+            levelUp();
+        }
+    }
+
+    int getLevel()
+    {
+        return level;
+    }
+
+    void levelUp()
+    {
+        this->level++;
+        this->experience = 0;
+        this->health += 10;
+        this->strength += 5;
+        std::cout << "Congratulations! You have leveled up to level " << level << "!" << std::endl;
+    }
+
+    void displayStats()
+    {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Level: " << level << std::endl;
+        std::cout << "Health: " << health << std::endl;
+        std::cout << "Strength: " << strength << std::endl;
+        std::cout << "Experience: " << experience << std::endl;
+    }
+};
