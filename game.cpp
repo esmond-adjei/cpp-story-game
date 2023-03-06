@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include "player/profile.h"
+#include "game/game.h"
 
 using namespace std;
 int main(void)
@@ -19,8 +20,15 @@ int main(void)
     Player2.getInfo();
 
     // CREATE ANOTHER PROFILE WITHOUT NAME
-    Profile Player3;
-    Player3.getInfo();
+    Profile *Player3 = new Profile();
+    Player3->getInfo();
+
+    Profile *DelProfile = new Profile("Addams");
+    DelProfile->DeleteProfile();
+
+    // LOAD GAMES
+    Game game1;
+    game1.loadgame();
 
     return 0;
 }

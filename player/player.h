@@ -21,11 +21,11 @@ public:
     }
 
     // getters
-    int getID() const { return id; }
+    int getPlayerID() const { return id; }
     int getLastLogDate() const { return logDate; }
     void getInfo() const
     {
-        cout << left << setw(15) << "ID:" << getID() << endl
+        cout << left << setw(15) << "ID:" << getPlayerID() << endl
              << left << setw(15) << "Last log date:" << getLastLogDate() << endl
              << endl;
     }

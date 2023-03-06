@@ -15,6 +15,12 @@ public:
     string getUsername() { return username; }
     void setUsername(string name) { username = name; }
 
+    void DeleteProfile()
+    {
+        cout << "Deleted " << getUsername() << endl;
+        delete this;
+    }
+
     using Player::getInfo;
     void getInfo()
     {
@@ -24,7 +30,7 @@ public:
         }
         else
         {
-            cout << left << setw(15) << "ID:" << getID() << endl
+            cout << left << setw(15) << "ID:" << getPlayerID() << endl
                  << left << setw(15) << "Username:" << getUsername() << endl
                  << left << setw(15) << "Last log date:" << getLastLogDate() << endl
                  << endl;
