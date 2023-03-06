@@ -30,5 +30,23 @@ int main(void)
     Game game1;
     game1.loadgame();
 
+    // MORE TO COME
+    /*
+        load game instructions
+        give options to:
+            - play a game
+                - load available games
+                - load level one of selected game [if want to save, allow to create an account]
+            - create an account
+                - input username
+                - print out userinfo
+                - load available games
+                - load level one of selected game [allow to save at each level]
+            - login
+                - play new game
+                - load saved games [list of user's saved games; allow user to continue level]
+
+    */
+
     return 0;
 }
