@@ -34,7 +34,15 @@ public:
     int getPlayerLen() const { return playerListLen; }
     int getStoryLen() const { return storyListLen; }
 
-    void loadgame()
+    // load first/home page
+    void loadHome()
+    {
+        cout << "1. Play Game" << endl
+             << "2. Load Game" << endl
+             << "3. Create Account" << endl;
+    }
+
+    void loadStories()
     {
         /* TO ADD
         - Player should be able to choose a game

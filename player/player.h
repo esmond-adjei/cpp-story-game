@@ -12,17 +12,19 @@ class Player
 protected:
     static int id;
     static int logDate;
+    int ID, DATE;
 
 public:
     Player()
     {
-        id++;
+        ID = id++;
         logDate += 10;
+        DATE = logDate;
     }
 
     // getters
-    int getPlayerID() const { return id; }
-    int getLastLogDate() const { return logDate; }
+    int getPlayerID() const { return ID; }
+    int getLastLogDate() const { return DATE; }
     void getInfo() const
     {
         cout << left << setw(15) << "ID:" << getPlayerID() << endl

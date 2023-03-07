@@ -1,7 +1,10 @@
 #include <iostream>
 #include <iomanip>
+
 #include "player/profile.h"
+#include "player/progress.h"
 #include "game/game.h"
+#include "game/account.h"
 
 using namespace std;
 int main(void)
@@ -28,7 +31,16 @@ int main(void)
 
     // LOAD GAMES
     Game game1;
-    game1.loadgame();
+    game1.loadStories();
+
+    // CREATE NEW ACCOUNT
+    Account account;
+    account.createAccount();
+
+    // load progress
+    cout << "\n======== PROGRESS =========" << endl;
+    Progress progress1;
+    progress1.createProgress(Player2);
 
     // MORE TO COME
     /*
@@ -45,7 +57,6 @@ int main(void)
             - login
                 - play new game
                 - load saved games [list of user's saved games; allow user to continue level]
-
     */
 
     return 0;
