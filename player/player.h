@@ -2,29 +2,32 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <iomanip>
 #include <iostream>
+#include <iomanip>
+#include <string>
+#include <ctime>
 
 using namespace std;
-
+string getCurrentTime();
 class Player
 {
+    /**
+     * Player _has_ id, logdate, PROFILE
+     */
 protected:
     static int id;
-    static int logDate;
-    int ID, DATE;
+    int ID;
+    string dateTime;
 
 public:
     Player()
     {
         ID = id++;
-        logDate += 10;
-        DATE = logDate;
+        dateTime = getCurrentTime();
     }
 
-    // getters
     int getPlayerID() const { return ID; }
-    int getLastLogDate() const { return DATE; }
+    string getLastLogDate() const { return dateTime; }
     void getInfo() const
     {
         cout << left << setw(15) << "ID:" << getPlayerID() << endl
@@ -35,6 +38,13 @@ public:
 
 // initialize static variables outside of the class
 int Player::id = 0;
-int Player::logDate = 10;
+
+string getCurrentTime()
+{
+    time_t now = time(0);
+    char *dt = ctime(&now);
+    string dateTime = dt;
+    return dateTime.substr(4, 7) + ", " + dateTime.substr(20, 4) + " " + dateTime.substr(11, 8);
+}
 
 #endif
