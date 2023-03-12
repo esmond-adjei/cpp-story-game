@@ -2,18 +2,26 @@
 #define GAME_H
 
 #include <iostream>
+#include <cstddef>
+#include "../player/player.h"
+#include "../story/story.h"
 
 using namespace std;
 class Game
 {
 private:
     static const int playerCap = 10;
-    static const int storyCap = 3;
-
     string playerList[playerCap];
-    string storyList[storyCap] = {"Jungle King", "Detective Sherlock", "Slum Dog Millionaire"};
     int playerListLen = sizeof(playerList) / sizeof(string);
-    int storyListLen = sizeof(storyList) / sizeof(string);
+    Story story;
+
+    /**
+     * MAKE STORY ENGINE LIKE A TERMINAL
+     * - load game
+     * - sign in
+     * - create account
+     * - etc.
+     */
 
     /*
         to add
@@ -30,28 +38,35 @@ private:
 
 public:
     int getPlayerCap() const { return playerCap; }
-    int getStoryCap() const { return storyCap; }
     int getPlayerLen() const { return playerListLen; }
-    int getStoryLen() const { return storyListLen; }
 
-    // load first/home page
-    void loadHome()
+    int loadHome()
     {
+        int option;
         cout << "1. Play Game" << endl
              << "2. Load Game" << endl
              << "3. Create Account" << endl;
+        cin >> option;
+
+        return option;
     }
 
-    void loadStories()
+    void loadGame(Player *player = nullptr)
     {
-        /* TO ADD
-        - Player should be able to choose a game
-        - A chosen game should load the current level of the story
-        */
-        cout << "\n==== Available Games ====" << endl;
-        for (int i = 0; i < getStoryLen(); i++)
+        int option;
+        if (player == nullptr)
         {
-            cout << (i + 1) << ": " << storyList[i] << endl;
+            cout << "\n==== Available Games ====" << endl;
+            for (int i = 0; i < story.getStoryLen(); i++)
+            {
+                cout << (i + 1) << ": " << story.getStoryHead(i) << endl;
+            }
+            cin >> option;
+            story.loadStory(story.getStoryHead(option - 1));
+        }
+        else
+        {
+            story.loadSavedGames(player); // load game from offline file
         }
     }
 };

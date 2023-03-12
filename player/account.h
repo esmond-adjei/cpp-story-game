@@ -2,7 +2,7 @@
 #define ACCOUNT_H
 
 #include <iostream>
-#include "../player/player.h"
+#include <iomanip>
 
 using namespace std;
 class Account
@@ -12,11 +12,26 @@ class Account
         - track logged in users id and games playing
         - log out user id
     */
+private:
+    string username;
+    string password;
+    int age = 0;
+
 public:
+    Account() {}
+    void setUsername(string u) { username = u; }
+    void setAge(int a) { age = a; }
+    string getUsername() const { return username; }
+    int getAge() { return age; }
+    void getProfile()
+    {
+        cout << left << setw(15) << "Username: " << getUsername() << endl;
+        cout << left << setw(15) << "Age: " << getAge() << endl;
+    }
+
     void createAccount()
     {
-        string username, password;
-        cout << "\n==== Creat Account ==== \n";
+        cout << "\n==== Create Account ==== \n";
         cout << "User Name: ";
         cin >> username;
         cout << "Password: ";
@@ -24,8 +39,6 @@ public:
 
         // create account
         cout << "\n==== Successfully created account ==== \n";
-        Profile p(username);
-        p.getInfo();
     }
 
     void login()
@@ -37,6 +50,11 @@ public:
         cin >> password;
 
         cout << "\n==== Successfully logged in ==== \n";
+    }
+
+    int validatePass()
+    {
+        return 1;
     }
 };
 

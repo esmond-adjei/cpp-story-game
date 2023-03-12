@@ -1,10 +1,8 @@
 #include <iostream>
 #include <iomanip>
-
-#include "player/profile.h"
-#include "player/progress.h"
+#include "player/player.h"
+#include "player/account.h"
 #include "game/game.h"
-#include "game/account.h"
 
 using namespace std;
 int main(void)
@@ -14,50 +12,27 @@ int main(void)
     cout << "===========================\n"
          << endl;
 
-    // CREATE PROFILE
-    Profile Player1("Winbledon");
-    Player1.getInfo();
+    // CREATE Player
+    Player player("Winbledon");
 
-    // CREATE ANOTHER PROFILE
-    Profile Player2("Hiesenberg");
-    Player2.getInfo();
-
-    // CREATE ANOTHER PROFILE WITHOUT NAME
-    Profile *Player3 = new Profile();
-    Player3->getInfo();
-
-    Profile *DelProfile = new Profile("Addams");
-    DelProfile->DeleteProfile();
-
-    // LOAD GAMES
-    Game game1;
-    game1.loadStories();
-
-    // CREATE NEW ACCOUNT
-    Account account;
-    account.createAccount();
-
-    // load progress
-    cout << "\n======== PROGRESS =========" << endl;
-    Progress progress1;
-    progress1.createProgress(Player2);
-
-    // MORE TO COME
-    /*
-        load game instructions
-        give options to:
-            - play a game
-                - load available games
-                - load level one of selected game [if want to save, allow to create an account]
-            - create an account
-                - input username
-                - print out userinfo
-                - load available games
-                - load level one of selected game [allow to save at each level]
-            - login
-                - play new game
-                - load saved games [list of user's saved games; allow user to continue level]
-    */
+    // START GAME
+    Game gameEngine;
+    switch (gameEngine.loadHome())
+    {
+    case 1:
+        gameEngine.loadGame();
+        break;
+    case 2:
+        player.authenticate(); // independent function to validate player
+        gameEngine.loadGame(&player);
+        break;
+    case 3:
+        player.createAccount();
+        gameEngine.loadGame();
+        break;
+    default:
+        cout << "Invalid Choice\n";
+    }
 
     return 0;
 }

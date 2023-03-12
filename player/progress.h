@@ -1,7 +1,7 @@
 #ifndef PROGRESS_H
 #define PROGRESS_H
 
-#include "profile.h"
+#include "player.h"
 
 class Progress
 {
@@ -11,7 +11,7 @@ private:
     int rowNum = sizeof(storyNLevel) / sizeof(storyNLevel[0]);
 
 public:
-    void createProgress(Profile player)
+    void showProgress(Player player)
     {
         /* save this info offline*/
         player.getInfo();
